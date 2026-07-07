@@ -11,11 +11,13 @@ from google import genai
 # Default Figma file ID (will be overridden by user input)
 DEFAULT_FIGMA_FILE_ID = 'dl5VgCWMZwL3uRi9mIOMvX'
 
-# Figma access tokens
+import os
+
+# Figma access tokens (Should be set as environment variables)
 FIGMA_TOKENS = {
-    'wahab_token': 'figd_str4YMXlfbmgslAlQnZnJIKI_DPqlQoq8wiMKl4Q',
-    'ramsha_token': 'figd_3bgofXhJbrbVRuPxlaXmrH-AwL6RTdr9hW1PLydz',
-    'farzam_token': 'figd_iVOxEWPrSYY0MFIOD06Btza3Z2ofcJvaPENMSNSB'
+    'wahab_token': os.environ.get('WAHAB_FIGMA_TOKEN'),
+    'ramsha_token': os.environ.get('RAMSHA_FIGMA_TOKEN'),
+    'farzam_token': os.environ.get('FARZAM_FIGMA_TOKEN')
 }
 
 
@@ -388,6 +390,20 @@ def extract_json_from_model_response(content):
             print(f"No JSON object found with regex in content: '{cleaned}'")
             raise Exception(
                 f"Could not decode JSON from model response and no JSON object found via regex. Original error: {e_direct}, Content: '{cleaned}'")
+
+
+def health_check(request):
+    """
+    Mandatory health check endpoint for Hugging Face Spaces.
+    """
+    return JsonResponse({"status": "ok"})
+
+
+def api_docs(request):
+    """
+    Mandatory API documentation endpoint.
+    """
+    return render(request, 'api_docs.html')
 
 
 @csrf_exempt

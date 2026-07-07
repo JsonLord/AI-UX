@@ -1,3 +1,8 @@
+---
+title: AI-UX Tester
+sdk: docker
+app_port: 7860
+---
 
 # AI-UX
 

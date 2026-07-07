@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-UX Tester - API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .endpoint-card { margin-bottom: 2rem; border-left: 5px solid #4a90e2; }
+        .method-badge { min-width: 80px; text-align: center; }
+        pre { background: #272822; color: #f8f8f2; padding: 1rem; border-radius: 5px; }
+        code { color: #e83e8c; }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="mb-4">AI-UX API Documentation</h1>
+        <p class="lead">Base URL: <code>https://leon4gr45-ux-mentor.hf.space</code></p>
+
+        <!-- /health -->
+        <div class="card endpoint-card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-success method-badge me-3">GET</span>
+                    <h3 class="mb-0">/health/</h3>
+                </div>
+                <p>Returns the health status of the application.</p>
+                <h6>Response Example:</h6>
+                <pre><code>{ "status": "ok" }</code></pre>
+            </div>
+        </div>
+
+        <!-- /generate_heatmap/ -->
+        <div class="card endpoint-card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary method-badge me-3">POST</span>
+                    <h3 class="mb-0">/generate_heatmap/</h3>
+                </div>
+                <p>Generates UX analysis and heatmap data for Figma frames.</p>
+                <h6>Request Payload:</h6>
+                <pre><code>{
+    "figma_data": { ... }, // Figma nodes JSON
+    "user_prompt": "Optional specific instructions"
+}</code></pre>
+                <h6>Response Example:</h6>
+                <pre><code>{
+    "heatmap_data": {
+        "analysis_data": {
+            "NODE_ID": {
+                "heatmap": [...],
+                "report": "HTML Report",
+                "suggestions": [...],
+                "ux_score": 85
+            }
+        }
+    }
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- /generate_simulation/ -->
+        <div class="card endpoint-card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary method-badge me-3">POST</span>
+                    <h3 class="mb-0">/generate_simulation/</h3>
+                </div>
+                <p>Generates a visual UX simulation script based on prototype interactions.</p>
+                <h6>Request Payload:</h6>
+                <pre><code>{
+    "design_data": { "type": "figma", "id": "FILE_ID" },
+    "task_description": "User clicks login",
+    "access_token": "FIGMA_TOKEN"
+}</code></pre>
+            </div>
+        </div>
+
+        <!-- /generate_iteration/ -->
+        <div class="card endpoint-card shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary method-badge me-3">POST</span>
+                    <h3 class="mb-0">/generate_iteration/</h3>
+                </div>
+                <p>Generates an improved version of a design to address UX drop-off points.</p>
+                <h6>Request Payload:</h6>
+                <pre><code>{
+    "figma_token": "FIGMA_TOKEN",
+    "design_data": { "id": "FILE_ID" },
+    "dropoff_points": [ { "reason": "Confusing button" } ]
+}</code></pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

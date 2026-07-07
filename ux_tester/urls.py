@@ -15,6 +15,8 @@ urlpatterns = [
     path('generate_simulation/', simulation_helpers.generate_simulation, name='generate_simulation'),
     path('design_iteration/', design_iteration.design_iteration_view, name='design_iteration'),
     path('generate_iteration/', design_iteration.generate_iteration, name='generate_iteration'),
+    path('health/', views.health_check, name='health_check'),
+    path('api-docs/', views.api_docs, name='api_docs'),
 ]
 
 if settings.DEBUG:
