@@ -11,11 +11,13 @@ from google import genai
 # Default Figma file ID (will be overridden by user input)
 DEFAULT_FIGMA_FILE_ID = 'dl5VgCWMZwL3uRi9mIOMvX'
 
-# Figma access tokens
+import os
+
+# Figma access tokens (Should be set as environment variables)
 FIGMA_TOKENS = {
-    'wahab_token': 'figd_str4YMXlfbmgslAlQnZnJIKI_DPqlQoq8wiMKl4Q',
-    'ramsha_token': 'figd_3bgofXhJbrbVRuPxlaXmrH-AwL6RTdr9hW1PLydz',
-    'farzam_token': 'figd_iVOxEWPrSYY0MFIOD06Btza3Z2ofcJvaPENMSNSB'
+    'wahab_token': os.environ.get('WAHAB_FIGMA_TOKEN'),
+    'ramsha_token': os.environ.get('RAMSHA_FIGMA_TOKEN'),
+    'farzam_token': os.environ.get('FARZAM_FIGMA_TOKEN')
 }
 
 
