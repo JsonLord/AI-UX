@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-UX API Documentation</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; color: #333; }
+        h1 { color: #5d5cde; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        .method { font-weight: bold; color: #d73a49; }
+        .path { font-weight: bold; color: #005cc5; }
+    </style>
+</head>
+<body>
+    <h1>AI-UX API Documentation</h1>
+    <p>This page documents the available API endpoints for the AI-UX Tester application.</p>
+
+    <h2>Mandatory Endpoints</h2>
+
+    <h3>/health</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/health/</span></li>
+        <li><strong>Purpose:</strong> Health check for deployment monitoring.</li>
+        <li><strong>Response:</strong> <code>{"status": "ok"}</code></li>
+    </ul>
+
+    <h3>/api-docs</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/api-docs/</span></li>
+        <li><strong>Purpose:</strong> This documentation page.</li>
+    </ul>
+
+    <h2>Functional Endpoints</h2>
+
+    <h3>Landing Page</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/</span></li>
+        <li><strong>Purpose:</strong> Application landing page.</li>
+    </ul>
+
+    <h3>Upload Design</h3>
+    <ul>
+        <li><span class="method">GET/POST</span> <span class="path">/upload_design/</span></li>
+        <li><strong>Purpose:</strong> Main interface for design analysis.</li>
+    </ul>
+
+    <h3>Fetch Figma File</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/fetch_figma_file/</span></li>
+        <li><strong>Purpose:</strong> Fetches file data from Figma API.</li>
+        <li><strong>Parameters:</strong> <code>file_id</code>, <code>access_token</code></li>
+    </ul>
+
+    <h3>Generate Heatmap</h3>
+    <ul>
+        <li><span class="method">POST</span> <span class="path">/generate_heatmap/</span></li>
+        <li><strong>Purpose:</strong> Runs AI analysis on Figma data to generate UX insights.</li>
+        <li><strong>Request Body:</strong>
+            <pre>{
+  "figma_data": {...},
+  "user_prompt": "Optional instructions"
+}</pre>
+        </li>
+    </ul>
+
+    <h3>Simulation</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/simulation/</span></li>
+        <li><strong>Purpose:</strong> User journey simulation interface.</li>
+    </ul>
+
+    <h3>Design Iteration</h3>
+    <ul>
+        <li><span class="method">GET</span> <span class="path">/design_iteration/</span></li>
+        <li><strong>Purpose:</strong> AI design iteration interface.</li>
+    </ul>
+
+</body>
+</html>

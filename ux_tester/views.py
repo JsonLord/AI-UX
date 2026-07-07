@@ -390,6 +390,20 @@ def extract_json_from_model_response(content):
                 f"Could not decode JSON from model response and no JSON object found via regex. Original error: {e_direct}, Content: '{cleaned}'")
 
 
+def health_check(request):
+    """
+    Mandatory health check endpoint for Hugging Face Spaces.
+    """
+    return JsonResponse({"status": "ok"})
+
+
+def api_docs(request):
+    """
+    Mandatory API documentation endpoint.
+    """
+    return render(request, 'api_docs.html')
+
+
 @csrf_exempt
 def fetch_figma_image_urls(request):
     """
